@@ -1,10 +1,11 @@
 import Router from '@/router/index.tsx'
-
+import ThemeProvider from '@/theme/ThemeProvider'
 function App() {
   return (
     <>
-      <Router></Router>
-      <span>321</span>
+      <ThemeProvider>
+        <Router></Router>
+      </ThemeProvider>
     </>
   )
 }

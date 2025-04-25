@@ -6,7 +6,7 @@ import SideBar from './components/SideBar'
 
 const { Sider, Content } = Layout
 
-const DashboardLayout: React.FC = () => {
+export default function DashboardLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer, borderRadiusLG }
@@ -39,5 +39,3 @@ const DashboardLayout: React.FC = () => {
     </Layout>
   )
 }
-
-export default DashboardLayout

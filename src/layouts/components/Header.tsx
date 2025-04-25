@@ -1,6 +1,6 @@
-import React from 'react'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { theme, Button } from 'antd'
+import SettingTheme from './SettingTheme'
 
 // 定义 Props 类型
 interface HeaderProps {
@@ -8,7 +8,7 @@ interface HeaderProps {
   setCollapsed: (collapsed: boolean) => void
 }
 
-const Header: React.FC<HeaderProps> = ({ collapsed, setCollapsed }: HeaderProps) => {
+export default function Header({ collapsed, setCollapsed }: HeaderProps) {
   const {
     token: { colorBgContainer }
   } = theme.useToken()
@@ -25,15 +25,16 @@ const Header: React.FC<HeaderProps> = ({ collapsed, setCollapsed }: HeaderProps)
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
             style={{
-        fontSize: '16px',
+              fontSize: '16px',
               width: 64,
               height: 64
             }}
           />
         </div>
         <div className='flex items-center h-full mx-2'>
+          <SettingTheme></SettingTheme>
           <img
-            className='avatar w-10 h-10'
+            className='avatar w-10 h-10 ml-2'
             src='https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png'
             alt='avatar'
           />
@@ -43,5 +44,3 @@ const Header: React.FC<HeaderProps> = ({ collapsed, setCollapsed }: HeaderProps)
     </>
   )
 }
-
-export default Header

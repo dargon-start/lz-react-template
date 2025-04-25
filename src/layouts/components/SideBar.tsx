@@ -1,4 +1,3 @@
-import React from 'react'
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
 import logo from '@/assets/images/logo.png'
@@ -7,7 +6,7 @@ interface SideBarProps {
   collapsed: boolean
 }
 
-const SideBar: React.FC<SideBarProps> = ({ collapsed }) => {
+export default function SideBar({ collapsed }: SideBarProps) {
   return (
     <>
       <div className='flex items-center justify-center'>
@@ -39,5 +38,3 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed }) => {
     </>
   )
 }
-
-export default SideBar
