@@ -3,7 +3,7 @@ import { Drawer, Card } from 'antd'
 import { SettingOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { MdCircle } from 'react-icons/md'
 import { presetsColors } from '@/theme/tokens/color'
-import { useSettings, useSettingActions } from '@/store/settingStore'
+import { useSettings, useSettingActions } from '@/store'
 import { ThemeMode, ThemeColorPresets } from '#/enum'
 
 type DrawerProps = {}
@@ -77,7 +77,7 @@ export default function SettingTheme() {
                   <div
                     key={preset}
                     style={{
-                      color: color.default
+                      color: color
                     }}
                   >
                     <MdCircle />

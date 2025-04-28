@@ -1,13 +1,12 @@
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router'
+import { lazy, Suspense } from 'react'
 import DashboardLayout from '@/layouts/index'
-import Login from '@/pages/login'
-import Test from '@/pages/test'
-
-const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env
+import userManagement from './modules/userManagement'
+const Login = lazy(() => import('@/pages/login'))
 
 const PUBLIC_ROUTE = {
   path: '/login',
-  element: <Login />
+  element: <Login></Login>
 }
 
 const NO_MATCHED_ROUTE = {
@@ -15,23 +14,24 @@ const NO_MATCHED_ROUTE = {
   element: <Navigate to='/404' replace />
 }
 
-export default function Router() {
-  const PROTECTED_ROUTE = {
+export const MENU_ROUTE = [userManagement]
+
+const PROTECTED_ROUTE = [
+  {
     path: '/',
     element: <DashboardLayout />,
     children: [
       {
         index: true,
-        element: <Navigate to={HOMEPAGE} replace />
-      },
-      {
-        path: '/test',
-        element: <Test />
+        element: <Navigate to='/user-management/user' replace />
       }
     ]
-  }
+  },
+  ...MENU_ROUTE
+]
 
-  const routes = [PUBLIC_ROUTE, PROTECTED_ROUTE, NO_MATCHED_ROUTE]
+export default function Router() {
+  const routes = [PUBLIC_ROUTE, ...PROTECTED_ROUTE, NO_MATCHED_ROUTE]
 
   const router = createBrowserRouter(routes)
 

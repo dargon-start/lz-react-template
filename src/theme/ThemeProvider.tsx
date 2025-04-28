@@ -1,5 +1,5 @@
 import { ConfigProvider, theme } from 'antd'
-import { useSettings } from '../store/settingStore'
+import { useSettings } from '@/store'
 import { ThemeMode } from '#/enum'
 import { presetsColors } from '@/theme/tokens/color'
 
@@ -17,7 +17,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
         theme={{
           algorithm: tm,
           token: {
-            colorPrimary: presetsColors[themeColorPresets].default
+            colorPrimary: presetsColors[themeColorPresets]
           }
         }}
       >

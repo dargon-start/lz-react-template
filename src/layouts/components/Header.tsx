@@ -1,22 +1,24 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
-import { theme, Button } from 'antd'
+import { theme, Button, Layout } from 'antd'
 import SettingTheme from './SettingTheme'
 
 // 定义 Props 类型
-interface HeaderProps {
+interface HeaderCpmProps {
   collapsed: boolean
   setCollapsed: (collapsed: boolean) => void
 }
 
-export default function Header({ collapsed, setCollapsed }: HeaderProps) {
+export default function HeaderCpm({ collapsed, setCollapsed }: HeaderCpmProps) {
   const {
     token: { colorBgContainer }
   } = theme.useToken()
 
+  const { Header } = Layout
+
   return (
     <>
-      <header
-        style={{ background: colorBgContainer }}
+      <Header
+        style={{ background: colorBgContainer, padding: 0 }}
         className='flex items-center justify-between'
       >
         <div>
@@ -40,7 +42,7 @@ export default function Header({ collapsed, setCollapsed }: HeaderProps) {
           />
           <span className='ml-2'>Admin</span>
         </div>
-      </header>
+      </Header>
     </>
   )
 }
