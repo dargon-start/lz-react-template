@@ -1,6 +1,8 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { theme, Button, Layout } from 'antd'
+import { memo } from 'react'
 import SettingTheme from './SettingTheme'
+import Breadcrumb from './Breadcrumb'
 
 // 定义 Props 类型
 interface HeaderCpmProps {
@@ -8,12 +10,14 @@ interface HeaderCpmProps {
   setCollapsed: (collapsed: boolean) => void
 }
 
-export default function HeaderCpm({ collapsed, setCollapsed }: HeaderCpmProps) {
+export default memo(function HeaderCpt({ collapsed, setCollapsed }: HeaderCpmProps) {
   const {
     token: { colorBgContainer }
   } = theme.useToken()
 
   const { Header } = Layout
+
+  console.log('header')
 
   return (
     <>
@@ -21,7 +25,7 @@ export default function HeaderCpm({ collapsed, setCollapsed }: HeaderCpmProps) {
         style={{ background: colorBgContainer, padding: 0 }}
         className='flex items-center justify-between'
       >
-        <div>
+        <div className='flex items-center h-full'>
           <Button
             type='text'
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -32,6 +36,7 @@ export default function HeaderCpm({ collapsed, setCollapsed }: HeaderCpmProps) {
               height: 64
             }}
           />
+          <Breadcrumb></Breadcrumb>
         </div>
         <div className='flex items-center h-full mx-2'>
           <SettingTheme></SettingTheme>
@@ -45,4 +50,4 @@ export default function HeaderCpm({ collapsed, setCollapsed }: HeaderCpmProps) {
       </Header>
     </>
   )
-}
+})

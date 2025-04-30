@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router'
 import { lazy, Suspense } from 'react'
 import DashboardLayout from '@/layouts/index'
 import userManagement from './modules/userManagement'
+import test from './modules/test'
+
 const Login = lazy(() => import('@/pages/login'))
 
 const PUBLIC_ROUTE = {
@@ -14,12 +16,11 @@ const NO_MATCHED_ROUTE = {
   element: <Navigate to='/404' replace />
 }
 
-export const MENU_ROUTE = [userManagement]
+export const MENU_ROUTE = [userManagement, test]
 
 const PROTECTED_ROUTE = [
   {
     path: '/',
-    element: <DashboardLayout />,
     children: [
       {
         index: true,

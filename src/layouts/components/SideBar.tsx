@@ -1,15 +1,17 @@
-import { Menu, type MenuProps } from 'antd'
+import { Menu, Typography, type MenuProps } from 'antd'
 import { useNavigate, useMatches } from 'react-router'
 import { MENU_ROUTE } from '@/router'
 import { useRouteToMenu, usePathname } from '@/hooks'
 import logo from '/logo.png'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, memo } from 'react'
+
+const { Text } = Typography
 
 interface SideBarProps {
   collapsed: boolean
 }
 
-export default function SideBar({ collapsed }: SideBarProps) {
+export default memo(function SideBar({ collapsed }: SideBarProps) {
   const menuItems = useRouteToMenu(MENU_ROUTE)
   const navigate = useNavigate()
   const pathname = usePathname()
@@ -40,7 +42,7 @@ export default function SideBar({ collapsed }: SideBarProps) {
     <>
       <div className='flex items-center justify-center'>
         <img src={logo} alt='logo' className='w-10 h-10' />
-        {!collapsed ? <div>react-template</div> : null}
+        <Text>{!collapsed ? <div>react-template</div> : null}</Text>
       </div>
       <Menu
         mode='inline'
@@ -61,4 +63,4 @@ export default function SideBar({ collapsed }: SideBarProps) {
       ></Menu>
     </>
   )
-}
+})

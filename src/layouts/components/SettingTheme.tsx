@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { Drawer, Card } from 'antd'
 import { SettingOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { MdCircle } from 'react-icons/md'
@@ -6,9 +6,7 @@ import { presetsColors } from '@/theme/tokens/color'
 import { useSettings, useSettingActions } from '@/store'
 import { ThemeMode, ThemeColorPresets } from '#/enum'
 
-type DrawerProps = {}
-
-export default function SettingTheme() {
+export default memo(function SettingTheme() {
   // 控制主题抽屉
   const [open, setOpen] = useState(false)
 
@@ -90,4 +88,4 @@ export default function SettingTheme() {
       </Drawer>
     </>
   )
-}
+})

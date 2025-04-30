@@ -1,12 +1,5 @@
 import { useMemo } from 'react'
-
-interface MenuItem {
-  key: string
-  label: string
-  path: string
-  icon?: React.ReactNode // 支持图标
-  children?: MenuItem[]
-}
+import { MenuItem } from '#/type'
 
 const useRouteToMenu = (routes: any[]): MenuItem[] => {
   return useMemo(() => {
