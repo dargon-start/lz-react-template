@@ -43,7 +43,10 @@ export default function DashboardLayout() {
         <Header collapsed={collapsed} setCollapsed={setCollapsed} />
         <Content style={contentStyle}>
           <Suspense fallback={<Spin />}>
-            {/*  MotionViewport需要加上key，否则切换路由没有动画效果 */}
+            {/*  
+                MotionViewport需要加上key，否则切换路由没有动画效果
+                使用useOutlet获取当前路由组件，避免DashboardLayout组件重复渲染
+            */}
             <MotionViewport key={pathname}>{Outlet}</MotionViewport>
           </Suspense>
         </Content>
