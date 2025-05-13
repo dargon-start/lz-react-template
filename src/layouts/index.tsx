@@ -1,12 +1,16 @@
 import { useState, memo, useMemo, Suspense } from 'react'
-import { Outlet } from 'react-router'
+import { useOutlet } from 'react-router'
 import { Layout, theme, Spin } from 'antd'
+import MotionViewport from '@/components/animate/MotionViewport'
+import { usePathname } from '@/hooks'
 import Header from './components/Header'
 import SideBar from './components/SideBar'
 
 const { Sider, Content } = Layout
 
-export default memo(function DashboardLayout() {
+export default function DashboardLayout() {
+  const Outlet = useOutlet()
+  const pathname = usePathname()
   const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer, borderRadiusLG }
@@ -39,10 +43,11 @@ export default memo(function DashboardLayout() {
         <Header collapsed={collapsed} setCollapsed={setCollapsed} />
         <Content style={contentStyle}>
           <Suspense fallback={<Spin />}>
-            <Outlet></Outlet>
+            {/*  MotionViewport需要加上key，否则切换路由没有动画效果 */}
+            <MotionViewport key={pathname}>{Outlet}</MotionViewport>
           </Suspense>
         </Content>
       </Layout>
     </Layout>
   )
-})
+}

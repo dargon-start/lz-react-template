@@ -2,6 +2,7 @@ import { ConfigProvider, theme } from 'antd'
 import { useSettings } from '@/store'
 import { ThemeMode } from '#/enum'
 import { presetsColors } from '@/theme/tokens/color'
+import CssTheme from './CssTheme'
 
 interface ThemeProviderProps {
   children: React.ReactNode
@@ -22,6 +23,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
         }}
       >
         {children}
+        <CssTheme></CssTheme>
       </ConfigProvider>
     </>
   )
