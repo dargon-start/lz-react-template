@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import '@ant-design/v5-patch-for-react-19'
 import './index.css'
 import App from './App.tsx'
+import worker from './_mock'
 
 createRoot(document.getElementById('root')!).render(
   // <StrictMode>
@@ -12,3 +13,5 @@ createRoot(document.getElementById('root')!).render(
   </HelmetProvider>
   // </StrictMode>
 )
+
+worker.start({ onUnhandledRequest: 'bypass' })

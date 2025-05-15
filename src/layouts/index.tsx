@@ -27,7 +27,12 @@ export default function DashboardLayout() {
     }),
     [colorBgContainer, borderRadiusLG]
   )
-  console.log('layout')
+
+  const fallBack = (
+    <div className='flex h-full items-center justify-center'>
+      <Spin size='large' />
+    </div>
+  )
 
   return (
     <Layout className='h-screen overflow-hidden'>
@@ -42,9 +47,9 @@ export default function DashboardLayout() {
       <Layout>
         <Header collapsed={collapsed} setCollapsed={setCollapsed} />
         <Content style={contentStyle}>
-          <Suspense fallback={<Spin />}>
+          <Suspense fallback={fallBack} key={pathname}>
             {/*  
-                MotionViewport需要加上key，否则切换路由没有动画效果
+                MotionViewport,Suspense需要加上key，否则切换路由没有动画效果
                 使用useOutlet获取当前路由组件，避免DashboardLayout组件重复渲染
             */}
             <MotionViewport key={pathname}>{Outlet}</MotionViewport>

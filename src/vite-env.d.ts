@@ -11,3 +11,7 @@ declare module '*.tiff'
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
+
+declare const worker: {
+  start: () => void
+}
