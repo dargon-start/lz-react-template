@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import { useTitle } from 'ahooks'
 import { motion } from 'framer-motion'
 import { NavLink } from 'react-router'
 import { Typography } from 'antd'
@@ -9,11 +9,10 @@ import Character6 from '@/assets/images/characters/character_6.png'
 const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env
 
 export default function Page404() {
+  useTitle('404 Page Not Found!')
+
   return (
     <>
-      <Helmet>
-        <title> 404 Page Not Found!</title>
-      </Helmet>
       <div className='m-auto max-w-[400px]'>
         <MotionContainer className='flex flex-col items-center justify-center px-2'>
           <motion.div variants={varBounce().in}>
