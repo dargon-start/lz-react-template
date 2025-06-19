@@ -12,11 +12,17 @@ interface Props extends MotionProps {
  *
  *    + once: 仅触发一次
  */
-export default function MotionViewport({ children }: Props) {
+export default function MotionViewport({ children, className }: Props) {
   console.log('MotionViewport')
 
   return (
-    <motion.div initial='initial' animate='animate' exit='exit' variants={varFade().inLeft}>
+    <motion.div
+      initial='initial'
+      animate='animate'
+      exit='exit'
+      variants={varFade().inLeft}
+      className={className}
+    >
       {children}
     </motion.div>
   )

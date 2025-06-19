@@ -8,6 +8,7 @@ export default function CssTheme() {
   const globalVars = `html {
     --ant-color-primary: ${token.colorPrimary};
     --ant-color-primary-hover: ${token.colorPrimaryHover};
+    --ant-color-border: ${token.colorBorder};
   }`
   return <style>{globalVars}</style>
 }

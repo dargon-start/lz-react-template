@@ -52,7 +52,9 @@ export default function DashboardLayout() {
                 MotionViewport,Suspense需要加上key，否则切换路由没有动画效果
                 使用useOutlet获取当前路由组件，避免DashboardLayout组件重复渲染
             */}
-            <MotionViewport key={pathname}>{Outlet}</MotionViewport>
+            <MotionViewport key={pathname} className='h-full w-full'>
+              {Outlet}
+            </MotionViewport>
           </Suspense>
         </Content>
       </Layout>

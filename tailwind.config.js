@@ -5,7 +5,8 @@ export default {
   theme: {
     colors: {
       primary: 'var(--ant-color-primary)',
-      'primary-hover': 'var(--ant-color-primary-hover)'
+      'primary-hover': 'var(--ant-color-primary-hover)',
+      'ant-color-border': 'var(--ant-color-border)'
     },
     extend: {}
   },
