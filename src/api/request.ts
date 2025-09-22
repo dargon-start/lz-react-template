@@ -26,7 +26,7 @@ axiosInstance.interceptors.response.use(
   (res: AxiosResponse<Result>) => {
     if (!res.data) throw new Error('API请求失败')
 
-    const {  data, message,code } = res.data
+    const {  data, message, code } = res.data
     // 业务请求成功
     const hasSuccess = data && Reflect.has(res.data, 'code') && code === ResultEnum.SUCCESS
     if (hasSuccess) {

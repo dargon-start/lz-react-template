@@ -1,5 +1,6 @@
-import { memo, useEffect, useState } from 'react'
+import { memo } from 'react'
 import { Table, Tag } from 'antd'
+import useSWR from 'swr'
 import { getOrgList } from '@/api/user-management'
 import type { Organization } from '@/api/user-management/org.type'
 interface dataType extends Organization {
@@ -9,25 +10,20 @@ interface dataType extends Organization {
 interface UserProps {}
 
 export default memo(function index({}: UserProps) {
-  const [data, setData] = useState<dataType[]>([])
-  const [loading, setLoading] = useState(false)
+  const {
+    data,
+    isLoading,
+    error
+  } = useSWR('/api/user-management/orgs', () => getOrgList({}))
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      const res = await getOrgList({}).finally(() => {
-        setLoading(false)
-      })
-      console.log(res)
-      const data = res.map(item => ({
-        ...item,
-        key: item.id
-      }))
-      setData(data)
-    }
+  const tableData = data?.map(item => ({
+    ...item,
+    key: item.id
+  }))
 
-    fetchData()
-  }, [])
+
+
+  if (error) return <div>failed to load</div>
 
   const columns = [
     {
@@ -54,7 +50,7 @@ export default memo(function index({}: UserProps) {
   return (
     <>
       <div className='text-primary text-base hover:text-primary-hover'>用户列表</div>
-      <Table<dataType> columns={columns} dataSource={data} loading={loading} />
+      <Table<dataType> columns={columns} dataSource={tableData} loading={isLoading} />
     </>
   )
 })

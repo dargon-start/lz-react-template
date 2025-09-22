@@ -12,8 +12,8 @@ createRoot(document.getElementById('root')!).render(
   // </StrictMode>
 )
 
-monitor.init({
-  url:'http://localhost:3000/error/report',
-})
+// monitor.init({
+//   url:'http://localhost:3000/error/report',
+// })
 
 worker.start({ onUnhandledRequest: 'bypass' })
