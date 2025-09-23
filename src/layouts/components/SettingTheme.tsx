@@ -1,5 +1,5 @@
 import { useState, memo } from 'react'
-import { Drawer, Card } from 'antd'
+import { Drawer, Card, theme } from 'antd'
 import { SettingOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { MdCircle } from 'react-icons/md'
 import { presetsColors } from '@/theme/tokens/color'
@@ -35,6 +35,8 @@ export default memo(function SettingTheme() {
     })
   }
 
+  const { token } = theme.useToken()
+
   return (
     <>
       <SettingOutlined
@@ -49,16 +51,52 @@ export default memo(function SettingTheme() {
             <div className='mb-3 text-base font-semibold text-text-secondary'>模式</div>
             <div className='flex items-center justify-center gap-3'>
               <Card
-                className='flex-1 flex justify-center items-center cursor-pointer'
+                className='flex-1 cursor-pointer'
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: '60px',
+                  backgroundColor:
+                    settings.themeMode === ThemeMode.Dark
+                      ? token.colorPrimaryHover
+                      : 'transparent'
+                }}
                 onClick={() => setThemeMode(ThemeMode.Dark)}
               >
                 <MoonOutlined style={{ fontSize: '20px' }} />
               </Card>
               <Card
-                className='flex-1 flex justify-center items-center cursor-pointer'
+                className='flex-1 cursor-pointer'
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: '60px',
+                  backgroundColor:
+                    settings.themeMode === ThemeMode.Light
+                      ? token.colorPrimaryHover
+                      : 'transparent'
+                }}
                 onClick={() => setThemeMode(ThemeMode.Light)}
               >
                 <SunOutlined style={{ fontSize: '20px' }} />
+              </Card>
+              <Card
+                className='flex-1 cursor-pointer'
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: '60px',
+                  backgroundColor:
+                    settings.themeMode === ThemeMode.System
+                      ? token.colorPrimaryHover
+                      : 'transparent'
+                }}
+                onClick={() => setThemeMode(ThemeMode.System)}
+              >
+                <span>跟随系统</span>
               </Card>
             </div>
           </div>
