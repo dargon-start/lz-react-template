@@ -4,6 +4,7 @@ import userManagement from './modules/userManagement'
 import test from './modules/test'
 import chatAi from './modules/chatAi'
 import errorReport from './modules/errorReport'
+import amazon from './modules/amazon'
 
 const Login = lazy(() => import('@/pages/login'))
 const Page404 = lazy(() => import('@/pages/error/page-404'))
@@ -24,7 +25,7 @@ const NO_MATCHED_ROUTE = {
   element: <Navigate to='/404' replace />
 }
 
-export const MENU_ROUTE = [userManagement, test, chatAi, errorReport]
+export const MENU_ROUTE = [userManagement, test, chatAi, errorReport, amazon]
 
 const PROTECTED_ROUTE = [
   {
